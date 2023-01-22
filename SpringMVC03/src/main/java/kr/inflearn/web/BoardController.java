@@ -39,11 +39,27 @@ public class BoardController {
 	
 	@RequestMapping("/get.do")
 	public String get(@RequestParam("bno")int bno, Model model) {
-		BoardVO board = service.get(bno);
+		BoardVO board = service.get(bno,get);
 		model.addAttribute("board",board);
 		return "get";
 	}
 	
+	@RequestMapping(value="/modify.do" , method = RequestMethod.GET)
+	public String modify(@RequestParam("bno") int bno , Model model) {
+		BoardVO board = service.get(bno,"modify");
+		model.addAttribute("board",board);
+		return "modify";
+	}
 	
+	@RequestMapping(value="/modify.do" , method = RequestMethod.POST)
+	public String modify(BoardVO board , Model model) {
+		service.modify(board);
+		return "redirect:/get.do?bno="+board.getIdx();
+	}
 	
+	@RequestMapping(value="/remove.do" , method = RequestMethod.POST)
+	public String remove(@RequestParam("bno") int bno) {
+		service.remove(bno);
+		return "redirect:/list.do";
+	}
 }

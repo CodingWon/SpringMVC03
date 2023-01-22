@@ -24,6 +24,9 @@
 		update tb_board set title = #{title} , contents = #{contents}
 		where idx = #{idx}
 	</update>
+	<update id="count" parameterType="Integer">
+		update tb_board set count=count+1 where idx=#{idx}
+	</update>
 	
 
 </mapper>

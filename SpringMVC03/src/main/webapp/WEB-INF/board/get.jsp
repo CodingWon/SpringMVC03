@@ -11,6 +11,21 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  	$(document).ready(()=> {
+  		$("#list").click(()=>{
+  			location.href="<c:url value='/list.do' />"
+  		});
+  		
+  		$("#modify").click(()=>{
+  			//location.href = "<c:url value='/modify.do' />?bno="+$("#idx").val();
+  			location.href = "<c:url value='/modify.do' />?bno=${board.idx}";
+  			
+  		})
+  		
+  	})
+  
+  </script>
 </head>
 <body>
  
@@ -35,8 +50,8 @@
 		      <label for="writer">writer</label>
 		      <input type="text" class="form-control" id="writer" readonly="readonly" name="writer" value="${board.writer }">
 		    </div>
-		    <button class="btn btn-default">Modify</button>
-		    <button class="btn btn-info">List</button>
+		    <button class="btn btn-default" id="modify">Modify</button>
+		    <button class="btn btn-info" id="list">List</button>
 	    </div>
 	    <div class="panel-footer">인프런 화이팅</div>
 	  </div>

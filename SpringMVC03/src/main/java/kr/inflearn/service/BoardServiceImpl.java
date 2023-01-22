@@ -16,7 +16,6 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public List<BoardVO> getList() {
-		
 		return  mapper.getList();
 	}
 
@@ -27,8 +26,10 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public BoardVO get(int bno) {
-		// TODO Auto-generated method stub
+	public BoardVO get(int bno , String mode) {
+		if(mode.equals("get")) {
+			mapper.count(bno);  
+		}
 		return mapper.read(bno);
 	}
 
