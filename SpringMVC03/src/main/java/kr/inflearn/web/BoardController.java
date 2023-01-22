@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.inflearn.model.BoardVO;
 import kr.inflearn.service.BoardService;
@@ -31,9 +32,16 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value= "/register.do", method = RequestMethod.POST )
-	public String registerPost() {
-		
+	public String registerPost(BoardVO board) {
+		service.register(board);
 		return "redirect:/list.do"; // 게시물로 리다이렉트
+	}
+	
+	@RequestMapping("/get.do")
+	public String get(@RequestParam("bno")int bno, Model model) {
+		BoardVO board = service.get(bno);
+		model.addAttribute("board",board);
+		return "get";
 	}
 	
 	
