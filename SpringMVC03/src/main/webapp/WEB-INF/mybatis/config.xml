@@ -4,6 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <typeAliases>
-      <typeAlias type="kr.inflearn.BoardVO" alias="boardVO"/>     
+      <typeAlias type="kr.inflearn.model.BoardVO" alias="boardVO"/>     
   </typeAliases> 
 </configuration>
